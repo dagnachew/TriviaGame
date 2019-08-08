@@ -1,9 +1,41 @@
+let timer = 5;
+let running = false;
+let intervalId;
+
+let triviaForm = document.querySelector("#triviaForm");
+
+window.onload = function() {
+    triviaForm.style.display = 'none';
+  };
+
+const start = document.querySelector("#start");
+start.addEventListener("click", function(){
+    start.style.display = "none";
+    triviaForm.style.display = "block";
+	onTimer();
+});
+
+
+//==============TIMER======================
+i = 20;
+function onTimer(){
+    document.querySelector("#timeLeft").innerHTML = "<h3>You have " + i + " seconds</h3>";
+    i--;
+    if(i < 0) {
+        document.querySelector("#timeLeft").innerHTML = "<h3>You have run out of time!</h3";
+        triviaForm.style.display = 'none';
+    }else {
+        setTimeout(onTimer, 1000);
+    }
+}
+
+//=========================================
+
 function submitAns() {
     let total = 5;
     let score = 0;
 
     // Questions 
-
     let q1 = document.forms["trivia"]["q1"].value;
     let q2 = document.forms["trivia"]["q2"].value;
     let q3 = document.forms["trivia"]["q3"].value;
@@ -11,11 +43,9 @@ function submitAns() {
     let q5 = document.forms["trivia"]["q5"].value;
 
     //Results
-
     let results = document.querySelector("#results");
 
     // To check for unanswered questions
- 
     for(let i = 1; i <= total; i++) {
         if(eval('q'+i) == null || eval('q'+i) == '') {
             alert('You missed question ' + i);
@@ -24,7 +54,6 @@ function submitAns() {
     }
 
     //Answers
-
     let answers = ["b", "d", "a", "b", "c"];
     for(let i = 1; i <= total; i++) {
         if(eval('q'+i) == answers[i-1]) {
@@ -52,9 +81,7 @@ function submitAns() {
 
 
     // Results
-
     results.textContent = "You scored " + score +  " out of " + total + ".";
-
     return false;
 }
 
