@@ -1,14 +1,11 @@
-let timer = 5;
-let running = false;
-let intervalId;
-
-let triviaForm = document.querySelector("#triviaForm");
-
 window.onload = function() {
     triviaForm.style.display = 'none';
   };
 
+
+const triviaForm = document.querySelector("#triviaForm");
 const start = document.querySelector("#start");
+
 start.addEventListener("click", function(){
     start.style.display = "none";
     triviaForm.style.display = "block";
@@ -31,6 +28,7 @@ function onTimer(){
 
 //=========================================
 
+
 function submitAns() {
     let total = 5;
     let score = 0;
@@ -45,7 +43,7 @@ function submitAns() {
     //Results
     let results = document.querySelector("#results");
 
-    // To check for unanswered questions
+    // To validate for unanswered questions
     for(let i = 1; i <= total; i++) {
         if(eval('q'+i) == null || eval('q'+i) == '') {
             alert('You missed question ' + i);
@@ -82,6 +80,8 @@ function submitAns() {
 
     // Results
     results.textContent = "You scored " + score +  " out of " + total + ".";
+    document.querySelector("#timeLeft").style.display = "none";
+    triviaForm.style.display = 'none';
     return false;
 }
 
