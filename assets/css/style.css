@@ -1,0 +1,46 @@
+body {
+    background: beige;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}
+#container {
+    width: 60%;
+    background: brown;
+    margin: 20px auto;
+    overflow: auto;
+    padding: 25px;
+}
+
+header {
+    text-align: center;
+    border-bottom: 1px solid white;
+}
+
+header h1 {
+    margin: 0;
+    padding: 0;
+}
+
+header p {
+    padding: 0;
+    margin-top: 5px;
+}
+
+/* section {
+    min-height: 400px;
+} */
+
+input[type='submit'] {
+    background: beige;
+    border: 0;
+    color: brown;
+    padding: 10px 15px;
+}
+
+h3#results{
+    /* background: beige; */
+    padding: 10px;
+    margin: 10px 0;
+    color: brown;
+}
