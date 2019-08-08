@@ -14,9 +14,9 @@ start.addEventListener("click", function(){
 
 
 //==============TIMER======================
-i = 20;
+i = 30;
 function onTimer(){
-    document.querySelector("#timeLeft").innerHTML = "<h3>You have " + i + " seconds</h3>";
+    document.querySelector("#timeLeft").innerHTML = "<h3>You have " + i + " seconds to complete quiz.</h3>";
     i--;
     if(i < 0) {
         document.querySelector("#timeLeft").innerHTML = "<h3>You have run out of time!</h3";
@@ -52,7 +52,7 @@ function submitAns() {
     }
 
     //Answers
-    let answers = ["b", "d", "a", "b", "c"];
+    let answers = ["c", "d", "b", "c", "b"];
     for(let i = 1; i <= total; i++) {
         if(eval('q'+i) == answers[i-1]) {
             score++;
