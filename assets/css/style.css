@@ -1,6 +1,7 @@
 body {
-    background: url(/assets/images/liverpool-fc-wallpapers-1920x1080.jpg);
-    background-size: content;
+    background-image: url(/assets/images/liverpool-fc-wallpapers-1920x1080.jpg);
+    background-color: darkslategray;
+    background-size: auto;
     background-position: center;
     background-repeat: no-repeat;
     color: white;

@@ -1,11 +1,15 @@
+//variables
+const triviaForm = document.querySelector("#triviaForm");
+const start = document.querySelector("#start");
+let timeLeftt = document.querySelector("#timeLeft");
+let results = document.querySelector("#results");
+
+
 window.onload = function() {
     triviaForm.style.display = 'none';
   };
 
-
-const triviaForm = document.querySelector("#triviaForm");
-const start = document.querySelector("#start");
-
+// Eventlistener on start btn
 start.addEventListener("click", function(){
     start.style.display = "none";
     triviaForm.style.display = "block";
@@ -13,11 +17,12 @@ start.addEventListener("click", function(){
 });
 
 
-//==============TIMER======================
+//Timer
 i = 30;
 function onTimer(){
-    document.querySelector("#timeLeft").innerHTML = "<h3>You have " + i + " seconds to complete quiz.</h3>";
+    document.querySelector("#timeLeft").innerHTML = "<h3>You have " + i + " seconds to complete.</h3>";
     i--;
+
     if(i < 0) {
         document.querySelector("#timeLeft").innerHTML = "<h3>You have run out of time!</h3";
         triviaForm.style.display = 'none';
@@ -26,12 +31,10 @@ function onTimer(){
     }
 }
 
-//=========================================
-
-
 function submitAns() {
     let total = 5;
     let score = 0;
+    let missed = 0;
 
     // Questions 
     let q1 = document.forms["trivia"]["q1"].value;
@@ -39,9 +42,7 @@ function submitAns() {
     let q3 = document.forms["trivia"]["q3"].value;
     let q4 = document.forms["trivia"]["q4"].value;
     let q5 = document.forms["trivia"]["q5"].value;
-
-    //Results
-    let results = document.querySelector("#results");
+    
 
     // To validate for unanswered questions
     for(let i = 1; i <= total; i++) {
@@ -54,34 +55,24 @@ function submitAns() {
     //Answers
     let answers = ["c", "d", "b", "c", "b"];
     for(let i = 1; i <= total; i++) {
-        if(eval('q'+i) == answers[i-1]) {
+        if(eval('q'+i) === answers[i-1]) {
             score++;
+        } else {
+            missed++;
         }
     }
 
-    // if(q1 === answers[0]) {
-    //     score++;
-    // };
-    // if(q2 === answers[1]) {
-    //     score++;
-    // };
-    // if(q3 === answers[2]) {
-    //     score++;
-    // };
-    // if(q4 === answers[3]) {
-    //     score++;
-    // };
-    // if(q5 === answers[4]) {
-    //     score++;
-    // };
-
-    // alert("you scored " + score + " out of " + total);
-
-
     // Results
-    results.textContent = "You scored " + score +  " out of " + total + ".";
-    document.querySelector("#timeLeft").style.display = "none";
+    if(score > 0){
+        results.textContent = "You got " + score +  " out of " + total + ".";
+    }
+    
+   // To hide timer
+   timeLeftt.style.display = "none";
+
+    // To hide questions after session expires
     triviaForm.style.display = 'none';
+
     return false;
 }
 
